@@ -72,6 +72,11 @@ de:
   sections:
     applications: "Anwendungen"
     bookmarks: "Lesezeichen"
+  applications:
+    health:
+      online: "Online"
+      warning: "Antwortet mit Fehlercode"
+      offline: "Offline"
   empty:
     no_categories: "Noch keine Kategorien"
     no_bookmarks: "Noch keine Lesezeichen"

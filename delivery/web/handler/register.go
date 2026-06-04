@@ -48,15 +48,16 @@ func RegisterAll(
 	})
 
 	Application(ApplicationDeps{
-		SessionStore:          sessionStore,
-		App:                   fiberApp,
-		CreateApplication:     uc.CreateApplication,
-		DeleteApplication:     uc.DeleteApplication,
-		UpdateApplication:     uc.UpdateApplication,
-		GetUserApplications:   uc.GetUserApplications,
-		ListApplications:      uc.ListApplications,
-		GetApplication:        uc.GetApplication,
-		GetAvailableIconTypes: uc.GetAvailableIconTypes,
+		SessionStore:           sessionStore,
+		App:                    fiberApp,
+		CreateApplication:      uc.CreateApplication,
+		DeleteApplication:      uc.DeleteApplication,
+		UpdateApplication:      uc.UpdateApplication,
+		GetUserApplications:    uc.GetUserApplications,
+		ListApplications:       uc.ListApplications,
+		GetApplication:         uc.GetApplication,
+		CheckApplicationHealth: uc.CheckApplicationHealth,
+		GetAvailableIconTypes:  uc.GetAvailableIconTypes,
 	})
 
 	Category(CategoryDeps{

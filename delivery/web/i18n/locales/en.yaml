@@ -72,6 +72,11 @@ en:
   sections:
     applications: "Applications"
     bookmarks: "Bookmarks"
+  applications:
+    health:
+      online: "Online"
+      warning: "Responding with error status"
+      offline: "Offline"
   empty:
     no_categories: "No categories yet"
     no_bookmarks: "No bookmarks yet"

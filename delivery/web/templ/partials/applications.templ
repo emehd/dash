@@ -35,6 +35,14 @@ templ Applications(inputs []ApplicationsInput) {
 						<h3 class="text-sm uppercase font-semibold break-all">{ input.DisplayName }</h3>
 						<h4 class="text-sm text-tertiary break-all">{ input.Domain }</h4>
 					</div>
+					<span
+						class="ml-auto flex h-5 w-5 shrink-0 items-center justify-center"
+						hx-get={ "/applications/" + fmt.Sprint(input.ID) + "/health" }
+						hx-trigger="load, every 60s"
+						hx-swap="innerHTML"
+					>
+						<span class="inline-flex h-3 w-3 shrink-0 animate-pulse rounded-full bg-tertiary/40 ring-2 ring-tertiary/20"></span>
+					</span>
 				</a>
 			</li>
 		}

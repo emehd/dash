@@ -31,6 +31,7 @@ type UseCases struct {
 	GetUserSettings          query.UserSettingsGetter
 	GetUserThemeByID         query.UserThemeByIDGetter
 	GetUserApplications      query.UserApplicationsGetter
+	CheckApplicationHealth   query.ApplicationHealthChecker
 	ListApplications         query.ApplicationsLister
 	GetApplication           query.ApplicationGetter
 	GetAvailableIconTypes    query.AvailableIconTypesGetter
@@ -70,6 +71,7 @@ type UseCases struct {
 func NewUseCases(repos Repos, v validation.Validator) *UseCases {
 	listApplications := query.NewListApplications(repos.Application)
 	getUserApplications := query.NewGetUserApplications(listApplications)
+	checkApplicationHealth := query.NewCheckApplicationHealth(repos.Application)
 	getApplication := query.NewGetApplication(repos.Application)
 
 	getUserCategories := query.NewGetUserCategories(repos.Dashboard, repos.Category, repos.Bookmark)
@@ -119,6 +121,7 @@ func NewUseCases(repos Repos, v validation.Validator) *UseCases {
 		GetUserSettings:          getUserSettings,
 		GetUserThemeByID:         getUserThemeByID,
 		GetUserApplications:      getUserApplications,
+		CheckApplicationHealth:   checkApplicationHealth,
 		ListApplications:         listApplications,
 		GetApplication:           getApplication,
 		GetAvailableIconTypes:    getAvailableIconTypes,

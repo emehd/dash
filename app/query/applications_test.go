@@ -130,3 +130,67 @@ func TestGetUserApplications_Handle_AdminSeesAll(t *testing.T) {
 	require.NoError(t, err)
 	require.Len(t, apps, 2)
 }
+
+// ── CheckApplicationHealth ────────────────────────────────────────────────
+
+type fakeApplicationStatusProbe struct {
+	statusCode int
+	err        error
+}
+
+func (p fakeApplicationStatusProbe) Probe(_ context.Context, _ string) (int, error) {
+	return p.statusCode, p.err
+}
+
+func TestCheckApplicationHealth_Handle_Online(t *testing.T) {
+	appRepo := &repoMock.ApplicationRepository{}
+	appRepo.On("Get", mock.Anything, uint(1)).Return(&domainrepo.ApplicationRecord{
+		ID:  1,
+		Url: "https://example.com",
+	}, nil)
+
+	h := query.NewCheckApplicationHealth(appRepo)
+	h.Probe = fakeApplicationStatusProbe{statusCode: 204}
+
+	health, err := h.Handle(context.Background(), 1)
+
+	require.NoError(t, err)
+	require.Equal(t, query.ApplicationHealthOnline, health.Status)
+	require.NotNil(t, health.StatusCode)
+	require.Equal(t, 204, *health.StatusCode)
+}
+
+func TestCheckApplicationHealth_Handle_Warning(t *testing.T) {
+	appRepo := &repoMock.ApplicationRepository{}
+	appRepo.On("Get", mock.Anything, uint(1)).Return(&domainrepo.ApplicationRecord{
+		ID:  1,
+		Url: "https://example.com",
+	}, nil)
+
+	h := query.NewCheckApplicationHealth(appRepo)
+	h.Probe = fakeApplicationStatusProbe{statusCode: 500}
+
+	health, err := h.Handle(context.Background(), 1)
+
+	require.NoError(t, err)
+	require.Equal(t, query.ApplicationHealthWarning, health.Status)
+	require.NotNil(t, health.StatusCode)
+	require.Equal(t, 500, *health.StatusCode)
+}
+
+func TestCheckApplicationHealth_Handle_Offline(t *testing.T) {
+	appRepo := &repoMock.ApplicationRepository{}
+	appRepo.On("Get", mock.Anything, uint(1)).Return(&domainrepo.ApplicationRecord{
+		ID:  1,
+		Url: "https://example.com",
+	}, nil)
+
+	h := query.NewCheckApplicationHealth(appRepo)
+	h.Probe = fakeApplicationStatusProbe{err: errors.New("connection refused")}
+
+	health, err := h.Handle(context.Background(), 1)
+
+	require.NoError(t, err)
+	require.Equal(t, query.ApplicationHealthOffline, health.Status)
+	require.Nil(t, health.StatusCode)
+}

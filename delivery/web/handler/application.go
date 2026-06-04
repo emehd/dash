@@ -19,6 +19,7 @@ import (
 const (
 	ApplicationsRoute            = "ApplicationsRoute"
 	ApplicationsEditRoute        = "ApplicationsEditRoute"
+	ApplicationHealthRoute       = "ApplicationHealthRoute"
 	ApplicationCreateRoute       = "ApplicationCreateRoute"
 	ApplicationUpdateRoute       = "ApplicationUpdateRoute"
 	ApplicationDeleteRoute       = "ApplicationDeleteRoute"
@@ -28,15 +29,16 @@ const (
 )
 
 type ApplicationDeps struct {
-	SessionStore          *oidc.SessionStore
-	App                   *fiber.App
-	GetUserApplications   query.UserApplicationsGetter
-	ListApplications      query.ApplicationsLister
-	GetApplication        query.ApplicationGetter
-	CreateApplication     command.ApplicationCreator
-	DeleteApplication     command.ApplicationDeleter
-	UpdateApplication     command.ApplicationUpdater
-	GetAvailableIconTypes query.AvailableIconTypesGetter
+	SessionStore           *oidc.SessionStore
+	App                    *fiber.App
+	GetUserApplications    query.UserApplicationsGetter
+	ListApplications       query.ApplicationsLister
+	GetApplication         query.ApplicationGetter
+	CheckApplicationHealth query.ApplicationHealthChecker
+	CreateApplication      command.ApplicationCreator
+	DeleteApplication      command.ApplicationDeleter
+	UpdateApplication      command.ApplicationUpdater
+	GetAvailableIconTypes  query.AvailableIconTypesGetter
 }
 
 func Application(deps ApplicationDeps) {
@@ -69,6 +71,30 @@ func Application(deps ApplicationDeps) {
 			})
 			return middleware.Render(c, partials.Applications(inputs))
 		}).Name(ApplicationsRoute)
+
+	router.
+		Use(middleware.HtmxOnly).
+		Get("/:id/health", func(c fiber.Ctx) error {
+			_, authorized := middleware.GetCurrentUser(c)
+			if !authorized {
+				return redirectToLogin(c)
+			}
+
+			id64, err := strconv.ParseUint(c.Params("id"), 10, 64)
+			if err != nil {
+				return fiber.NewError(fiber.StatusBadRequest, "invalid id")
+			}
+
+			health, err := deps.CheckApplicationHealth.Handle(c.Context(), uint(id64))
+			if err != nil {
+				return httpError(err)
+			}
+
+			return middleware.Render(c, partials.ApplicationHealthBadge(partials.ApplicationHealthBadgeInput{
+				Status:     string(health.Status),
+				StatusCode: health.StatusCode,
+			}))
+		}).Name(ApplicationHealthRoute)
 
 	router.
 		Use(middleware.HtmxOnly).

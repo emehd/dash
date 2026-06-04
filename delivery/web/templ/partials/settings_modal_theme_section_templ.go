@@ -271,7 +271,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</label> <select id=\"theme-id\" name=\"theme_id\" class=\"mt-1 block w-full rounded-lg bg-primary border border-tertiary text-secondary p-2 focus:outline-none focus:border-tertiary/80\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</label><div class=\"relative mt-1\"><select id=\"theme-id\" name=\"theme_id\" class=\"block w-full rounded-lg bg-primary border border-tertiary text-secondary p-2 pr-8 focus:outline-none focus:border-tertiary/80 cursor-pointer appearance-none\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -284,7 +284,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 					var templ_7745c5c3_Var16 string
 					templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(theme.ID))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 118, Col: 42}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 119, Col: 43}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 					if templ_7745c5c3_Err != nil {
@@ -297,7 +297,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 					var templ_7745c5c3_Var17 string
 					templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(theme.DisplayName)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 118, Col: 73}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 119, Col: 74}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 					if templ_7745c5c3_Err != nil {
@@ -315,7 +315,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 					var templ_7745c5c3_Var18 string
 					templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint(theme.ID))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 120, Col: 42}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 121, Col: 43}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 					if templ_7745c5c3_Err != nil {
@@ -328,7 +328,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 					var templ_7745c5c3_Var19 string
 					templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(theme.DisplayName)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 120, Col: 64}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/settings_modal_theme_section.templ`, Line: 121, Col: 65}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 					if templ_7745c5c3_Err != nil {
@@ -340,7 +340,7 @@ func SettingsModalThemeSection(input SettingsModalThemeSectionInput) templ.Compo
 					}
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</select></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</select> <span class=\"material-icons-round absolute right-2 top-1/2 -translate-y-1/2 text-tertiary pointer-events-none text-base\">expand_more</span></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
