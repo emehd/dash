@@ -24,6 +24,8 @@ templ Applications(inputs []ApplicationsInput) {
 			<li id={ "application-" + fmt.Sprint(input.ID) } class="list-item md:grid-item">
 				<a
 					href={ input.Url }
+					target="_blank"
+					rel="noopener noreferrer"
 					class="p-3 flex items-center gap-4 text-secondary rounded-xl hover:bg-tertiary/10 transition-all duration-200"
 				>
 					<div class="text-4xl">

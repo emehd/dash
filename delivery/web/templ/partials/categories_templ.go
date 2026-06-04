@@ -171,7 +171,7 @@ func Categories(inputs []CategoriesInput) templ.Component {
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
-						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" class=\"flex items-center gap-2 text-secondary hover:pl-2 hover:underline hover:text-secondary transition-all duration-200\"><div class=\"text-xl\">")
+						templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"flex items-center gap-2 text-secondary hover:pl-2 hover:underline hover:text-secondary transition-all duration-200\"><div class=\"text-xl\">")
 						if templ_7745c5c3_Err != nil {
 							return templ_7745c5c3_Err
 						}
@@ -200,7 +200,7 @@ func Categories(inputs []CategoriesInput) templ.Component {
 						var templ_7745c5c3_Var12 string
 						templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(components.IconText(bookmark.IconType, bookmark.Icon))
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories.templ`, Line: 61, Col: 136}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories.templ`, Line: 63, Col: 136}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 						if templ_7745c5c3_Err != nil {
@@ -213,7 +213,7 @@ func Categories(inputs []CategoriesInput) templ.Component {
 						var templ_7745c5c3_Var13 string
 						templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(bookmark.DisplayName)
 						if templ_7745c5c3_Err != nil {
-							return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories.templ`, Line: 64, Col: 54}
+							return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories.templ`, Line: 66, Col: 54}
 						}
 						_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 						if templ_7745c5c3_Err != nil {

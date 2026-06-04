@@ -35,6 +35,8 @@ templ CategoriesShelved(inputs []CategoriesShelvedInput) {
 						<li id={ "bookmark-" + fmt.Sprint(b.ID) } class="list-item md:grid-item">
 							<a
 								href={ b.Url }
+								target="_blank"
+								rel="noopener noreferrer"
 								class="p-3 flex items-center gap-4 text-secondary rounded-xl hover:bg-tertiary/10 transition-all duration-200"
 							>
  						<div class="text-4xl">

@@ -127,7 +127,7 @@ func CategoriesShelved(inputs []CategoriesShelvedInput) templ.Component {
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" class=\"p-3 flex items-center gap-4 text-secondary rounded-xl hover:bg-tertiary/10 transition-all duration-200\"><div class=\"text-4xl\">")
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"p-3 flex items-center gap-4 text-secondary rounded-xl hover:bg-tertiary/10 transition-all duration-200\"><div class=\"text-4xl\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -156,7 +156,7 @@ func CategoriesShelved(inputs []CategoriesShelvedInput) templ.Component {
 					var templ_7745c5c3_Var9 string
 					templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(components.IconText(b.IconType, b.Icon))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 41, Col: 106}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 43, Col: 106}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 					if templ_7745c5c3_Err != nil {
@@ -169,7 +169,7 @@ func CategoriesShelved(inputs []CategoriesShelvedInput) templ.Component {
 					var templ_7745c5c3_Var10 string
 					templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(b.DisplayName)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 44, Col: 78}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 46, Col: 78}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 					if templ_7745c5c3_Err != nil {
@@ -182,7 +182,7 @@ func CategoriesShelved(inputs []CategoriesShelvedInput) templ.Component {
 					var templ_7745c5c3_Var11 string
 					templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(b.Domain)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 45, Col: 63}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `delivery/web/templ/partials/categories_shelved.templ`, Line: 47, Col: 63}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 					if templ_7745c5c3_Err != nil {
